@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="body_element" style="display: none">{{ body_from_python }}</div>
+<div id="icon_element" style="display: none">{{ icon_from_python }}</div>
+
+<p>This element will be invisible</p>
+
+<script>
+
+    let body_variable = document.getElementById('body_element').innerHTML;
+    let icon_variable = document.getElementById('icon_element').innerHTML;
+
+    window.alert("Body variable = " + body_variable);
+    window.alert("Icon variable = " + icon_variable);
+
+    function showNotification() {
+        const notification = new Notification(
+            "New Product",
+            {
+                body: body_variable,
+                icon: icon_variable,
+                vibrate: true,
+            });
+        notification.onclick = (e) => {window.location.href = "#";};
+    }
+
+</script>
+
+</body>
+</html>
